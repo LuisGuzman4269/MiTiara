@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  CUSTOMER
+  VENDOR
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  role          UserRole
+  displayName   String
+  email         String         @unique
+  password      String
+  phone         String
+  image         String?
+  bookings      Booking[]
+  reviews       Review[]
+  notifications Notification[]
+  services      Service[]
+  favorites     Service[]      @relation("userFavorites")
+}
+
+model Booking {
+  id               Int            @id @default(autoincrement())
+  status           Boolean
+  hasBeenConfirmed Boolean
+  start            DateTime
+  end              DateTime
+  price            Int
+  customer         User           @relation(fields: [customerID], references: [id])
+  customerID       Int
+  service          Service        @relation(fields: [serviceID], references: [id], onDelete: Cascade)
+  serviceID        Int
+  notification     Notification[]
+}
+
+model Notification {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  dismissed   Boolean
+  start       DateTime @default(now())
+  booking     Booking  @relation(fields: [bookingID], references: [id], onDelete: Cascade)
+  bookingID   Int
+  user        User     @relation(fields: [userID], references: [id])
+  userID      Int
+}
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  stars       Int
+  description String
+  date        DateTime @default(now())
+  author      User     @relation(fields: [authorID], references: [id])
+  authorID    Int
+  service     Service  @relation(fields: [serviceID], references: [id], onDelete: Cascade)
+  serviceID   Int
+}
+
+model Service {
+  id          Int              @id @default(autoincrement())
+  minPrice    Int
+  maxPrice    Int
+  address     String
+  description String
+  name        String
+  image       String?
+  vendor      User             @relation(fields: [vendorID], references: [id])
+  vendorID    Int
+  type        Type             @relation(fields: [typeID], references: [id])
+  typeID      Int
+  bookings    Booking[]
+  reviews     Review[]
+  subTypes    SubTypeService[]
+  favoritedBy User[]           @relation("userFavorites")
+}
+
+model Type {
+  id       Int       @id @default(autoincrement())
+  name     String
+  services Service[]
+  subtypes SubType[]
+}
+
+model SubType {
+  id              Int              @id @default(autoincrement())
+  name            String
+  type            Type             @relation(fields: [typeID], references: [id])
+  typeID          Int
+  subTypeServices SubTypeService[]
+}
+
+model SubTypeService {
+  id        Int     @id @default(autoincrement())
+  subType   SubType @relation(fields: [subTypeID], references: [id])
+  subTypeID Int
+  service   Service @relation(fields: [serviceID], references: [id])
+  serviceID Int
+}

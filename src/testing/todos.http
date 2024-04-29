@@ -1,0 +1,55 @@
+#####
+# @name csrf
+GET http://localhost:3000/api/auth/csrf HTTP/1.1
+
+######
+@token = {{csrf.response.body.csrfToken}}
+@email = test@test7.com
+@password = test
+
+POST http://localhost:3000/api/auth/callback/normal HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+csrfToken={{token}}&email={{email}}&password={{password}}&redirect=false&json=true
+
+#####
+GET http://localhost:3000/api/todos HTTP/1.1
+
+####
+@done = false
+@value = "test todo item 3"
+
+POST http://localhost:3000/api/todos HTTP/1.1
+Content-Type: application/json
+
+{
+  "done": {{done}},
+  "value": {{value}}
+}
+
+####
+@id = 1
+@done = true
+@value = "test todo item"
+
+PUT http://localhost:3000/api/todos/{{id}} HTTP/1.1
+Content-Type: application/json
+
+{
+  "done": {{done}},
+  "value": {{value}}
+}
+
+
+#####
+@token = {{csrf.response.body.csrfToken}}
+POST http://localhost:3000/api/auth/signout
+Content-Type: application/x-www-form-urlencoded
+
+csrfToken={{token}}
+
+#####
+GET http://localhost:3000/api/test/2/3/3/34 HTTP/1.1
+
+#####
+GET http://localhost:3000/api/test
