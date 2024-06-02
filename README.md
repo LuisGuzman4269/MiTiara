@@ -1,1 +1,2 @@
-Starting from scratch, work on whatever backend you want, and Luis and Jara are working on Frontend with next/react and for the ai we are using CLIPS. Jara will be messing with stuff on week 7.
+NEXT/REACT
+CLIPS
