@@ -2,6 +2,7 @@
 
 # dependencies
 /client/node_modules
+/backend/node_modules
 /client/.pnp
 /client/.pnp.js
 
@@ -17,6 +18,7 @@
 /client/.env.development.local
 /client/.env.test.local
 /client/.env.production.local
+/backend/.env
 
 /client/npm-debug.log*
 /client/yarn-debug.log*
