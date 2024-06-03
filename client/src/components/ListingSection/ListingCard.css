@@ -1,0 +1,64 @@
+/* Listing Card */
+.listing-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    padding: 0;
+    margin: 0 auto;
+    width: 320px;
+    height: 406px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.22);
+    border-radius: 16px; /* Curve the ends */
+    cursor: pointer; /* Added for clickability indication */
+  }
+  
+  /* Image Container */
+  .image-container {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top-left-radius: 16px; /* Curve the top left corner */
+    border-top-right-radius: 16px; /* Curve the top right corner */
+  }
+  
+  .venue-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 16px; /* Curve the top left corner */
+    border-top-right-radius: 16px; /* Curve the top right corner */
+  }
+  
+  /* Content */
+  .content {
+    width: 100%; /* Make sure the content spans the full width of the card */
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    gap: 8px;
+  }
+  
+  .title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 23px;
+    line-height: 24px;
+    color: #09101D;
+    margin: 0;
+    text-align: center; /* Center the title text */
+  }
+  
+  .rating,
+  .price {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 20px;
+    color: #09101D;
+    text-align: center; /* Center the rating and price text */
+  }
