@@ -1,38 +1,76 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import CategoryBar from './components/CategoryBar/CategoryBar';
 import ListingCard from './components/ListingSection/ListingCard';
 
+interface Listing {
+  id: number;
+  category: string;
+  title: string;
+  rating: number;
+  price: string;
+  imageUrl: string;
+}
+
+//Used for Testing Purposes, can prob populate 
+const listingsData: Listing [] = [
+  { id: 1, category: 'Venue', title: 'Venue Test', rating: 5, price: '200$', imageUrl: 'https://static.wixstatic.com/media/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg/v1/fill/w_655,h_655,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg' },
+  { id: 2, category: 'Venue', title: 'Venue Test1', rating: 5, price: '2000$', imageUrl: 'https://static.wixstatic.com/media/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg/v1/fill/w_655,h_655,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg' },
+  { id: 3, category: 'Venue', title: 'Venue Test2', rating: 5, price: '20000$', imageUrl: 'https://static.wixstatic.com/media/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg/v1/fill/w_655,h_655,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg' },
+  { id: 4, category: 'Venue', title: 'Venue Test3', rating: 5, price: '20000$', imageUrl: 'https://static.wixstatic.com/media/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg/v1/fill/w_655,h_655,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg' },
+  { id: 5, category: 'Venue', title: 'Venue Test3', rating: 5, price: '20000$', imageUrl: 'https://static.wixstatic.com/media/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg/v1/fill/w_655,h_655,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg' },
+  { id: 6, category: 'Venue', title: 'Venue Test3', rating: 5, price: '20000$', imageUrl: 'https://static.wixstatic.com/media/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg/v1/fill/w_655,h_655,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg' },
+
+
+  { id: 7, category: 'Entertainment', title: 'Entertainment Test', rating: 4, price: '100$', imageUrl: 'https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_header/Image_URL_header-png?_i=AA' },
+  { id: 8, category: 'Catering', title: 'Catering Test', rating: 3, price: '150$', imageUrl: 'url-to-image' },
+  { id: 9, category: 'Decoration', title: 'Decoration Test', rating: 3, price: '150$', imageUrl: 'url-to-image' },
+  { id: 10, category: 'Photo & Video', title: 'Photo & Video Test', rating: 3, price: '150$', imageUrl: 'url-to-image' },
+  
+];
+
+
 function App() {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [listings, setListings] = useState<Listing[]>(listingsData);
+
+  useEffect(() => {
+    // Filter listings based on initial category
+    setListings(listingsData.filter(listing => listing.category === selectedCategory));
+  }, [selectedCategory]);
 
   const handleSelectCategory = (category: string) => {
     setSelectedCategory(category);
+    setListings(listingsData.filter(listing => listing.category === category));
+    
   };
+  
   return (
+
+
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <div>
-        <CategoryBar />
+        <div className="logo-title-container">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Mi Tiara</h1>
         </div>
-        <div>
-        <ListingCard imageUrl="https://static.wixstatic.com/media/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg/v1/fill/w_655,h_655,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/7ac599_f316fbd1ac2244b799a5cc4b7bdc47bc~mv2.jpg" title="Monday" rating={8} price={"AM"} onClick={() => {}} />
-        </div>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <CategoryBar onCategorySelect={handleSelectCategory} />
       </header>
+      <div className="listings-container">
+        {listings.map((listing: Listing) => ( 
+          <ListingCard
+            key={listing.id}
+            imageUrl={listing.imageUrl}
+            title={listing.title}
+            rating={listing.rating}
+            price={listing.price}
+            onClick={() => {}}
+          />
+        ))}
+      </div>
     </div>
+    
   );
 }
 

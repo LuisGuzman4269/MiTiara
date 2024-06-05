@@ -1,27 +1,39 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
+  width: 5cm;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo-title-container {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Adjust gap as necessary */
+}
+.App-title {
+  font-size: 42px; /* Adjust size as necessary */
+  color: #e3ae64ec; /* Adjust color as necessary */
+  
+  font-family: 'Great Vibes', cursive; /* Ensure you load this font or choose another */
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  /* display: flex; */
+  
+  background-color: #ffffff;
+ 
+  display: left;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  padding-left: 10;
+  
+  
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(196, 141, 52);
+  font-family: 'Great Vibes', cursive;
 }
 
 .App-link {
