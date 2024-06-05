@@ -53,6 +53,10 @@ const Home = () => {
     const handleLoginClick = () => {
       navigate('/login');
     };
+
+    const handleHomeClick = () => {
+      navigate('/');
+    }
     
     return (
   
@@ -60,7 +64,7 @@ const Home = () => {
       <div className="App">
         <header className="App-header">
           <div className="logo-title-container">
-            <img src={logo} className="App-logo" alt="logo" />
+            <img src={logo} className="App-logo" alt="logo" onClick={handleHomeClick}/>
             {/* <h1 className="App-title">Mi Tiara</h1> */}
             <div className='separator'/>
             <div className='login'onClick={handleLoginClick}>
