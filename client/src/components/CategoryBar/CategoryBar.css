@@ -12,4 +12,5 @@
   box-sizing: border-box; /* Include padding in width */
   position: relative; /* Ensure it is in the normal document flow */
   margin-bottom: 10px; /* Add margin to create space below */
+  border-radius: 16px;
 }
