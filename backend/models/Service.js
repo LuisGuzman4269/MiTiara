@@ -1,5 +1,20 @@
 const mongoose = require('mongoose');
 
+const premium = new mongoose.Schema({
+    upCharge: {
+        type: Number,
+        required: false
+    },
+    premDescription: {
+        type: String,
+        required: true
+    },
+    premName: {
+        type: String,
+        required: true
+    },
+});
+
 const serviceSchema = new mongoose.Schema({
     serName: {
         type: String,
@@ -36,19 +51,5 @@ const serviceSchema = new mongoose.Schema({
     }
 });
 
-const premium = new mongoose.Schema({
-    upCharge: {
-        type: Number,
-        required: false
-    },
-    premDescription: {
-        type: String,
-        required: true
-    },
-    premName: {
-        type: String,
-        required: true
-    },
-});
 
-module.exports = mongoose.model('Service', serviceSchema);
+module.exports = serviceSchema;

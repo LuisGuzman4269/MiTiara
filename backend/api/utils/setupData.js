@@ -1,15 +1,11 @@
 const mongoose = require('mongoose');
-const Service = require('../../models/Service');
+const User = require('../../models/User');
 const Vendor = require('../../models/Vendor');
-const User = require('../../models/User')
-
+const Service = require('../../models/Service');
 // Connect to your MongoDB database
 mongoose.connect('mongodb://localhost:27017/PFM')
 .then(() => {
     console.log('Connected to MongoDB!');
-    app.listen(3000, () => {
-        console.log('Server is running on port 3000');
-    });
 })
 .catch(error => {
     console.error('Error connecting to MongoDB:', error); 
@@ -31,7 +27,7 @@ const sampleVendors = [
         vendorName: "Region Events",
         vendorCity: "San Luis Obispo",
         vendorState: "California",
-        venderBio: {
+        vendorBio: {
             bioDescription: "Venue for big Events",
             bioImages: ["https://lh3.googleusercontent.com/p/AF1QipNXKDkfhPZbzLTP19Pid7kRflNCMSU-6uNkLFdA=s1360-w1360-h1020", "https://lh3.googleusercontent.com/p/AF1QipNZkiVUBYks207st11kkHN48nuPqkh3mmzm6yB7=s1360-w1360-h1020"],
         vendorAvailability: 
@@ -88,7 +84,7 @@ const sampleVendors = [
 async function seedDatabase() {
     try {
         await Vendor.deleteMany({}); 
-        await Vendor.insertMany(sampleServices);
+        await Vendor.insertMany(sampleVendors);
         await User.deleteMany({});
 
         console.log('Database seeded successfully!');
@@ -98,3 +94,5 @@ async function seedDatabase() {
         mongoose.disconnect();
     }
 }
+
+seedDatabase();

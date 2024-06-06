@@ -1,4 +1,3 @@
-const Vendor = require('../../models/vendor.js');
 const mongoose = require('mongoose');
 
 const getAllVendors = async (req, res) => {

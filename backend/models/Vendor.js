@@ -1,7 +1,52 @@
 const mongoose = require('mongoose');
 const Service = require('./Service');
 
-const VendorSchema = new mongoose.Schema(
+
+const scheduleDay = mongoose.Schema({
+    dayOfWeek : {
+        type: String,
+        required: true
+    },
+    startTime: {
+        type: Date,
+        required: true
+    },
+    endTime: {
+        type: Date,
+        required: true
+    }
+})
+
+const bio = mongoose.Schema({
+    bioDescription: {
+        type: String
+    },
+    bioImages: [{
+        type: String,
+        required: false,
+    }],
+    vendorAvailability: {
+        type: [scheduleDay],
+        required: true
+    }
+});
+
+const certificate = mongoose.Schema({
+    certName: {
+        type: String,
+        required: true
+    },
+    certDescription: {
+        type: String,
+        required: true
+    },
+    certImage: {
+        type: String,
+        required: false
+    }
+})
+
+const VendorSchema = mongoose.Schema(
     {
         vendorName: {
             type: String,
@@ -34,54 +79,11 @@ const VendorSchema = new mongoose.Schema(
             required: false
         },
         vendorServices: [{
-            type: Service.Schema,
+            type: Service,
             required: false
         }]
     }
 );
 
-const bio = mongoose.Schema({
-    bioDescription: {
-        type: String,
-    },
-    bioImages: [{
-        type: String,
-        required: false,
-    }],
-    vendorAvailability: {
-        type: [scheduleDay],
-        required: true
-    }
-});
-
-const scheduleDay = mongoose.Schema({
-    dayOfWeek : {
-        type: String,
-        required: true
-    },
-    startTime: {
-        type: Date,
-        required: true
-    },
-    endTime: {
-        type: Date,
-        required: true
-    }
-})
-
-const certificate = mongoose.Schema({
-    certName: {
-        type: String,
-        required: true
-    },
-    certDescription: {
-        type: String,
-        required: true
-    },
-    certImage: {
-        type: Image,
-        required: false
-    }
-})
 
 module.exports = mongoose.model('Vendor', VendorSchema);
