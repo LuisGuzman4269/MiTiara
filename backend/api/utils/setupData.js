@@ -213,7 +213,7 @@ const sampleEntertainmentVendors = [
       serName: "Mariachi Performance",
       serDescription: "Traditional Mariachi music for all types of events.",
       serImages: ["https://lh3.googleusercontent.com/p/AF1QipO72Qmc_M3uyv-Dh-8WV7bEsmn63Gq1-4l72sQA=s1360-w1360-h1020"],
-      serType: "Music",
+      serType: "Entertainment",
       serPrice: 200,
       serByHour: true,
       serPremium: [
@@ -251,7 +251,7 @@ const sampleEntertainmentVendors = [
       serName: "DJ Services",
       serDescription: "High-energy DJ for all types of events, specializing in Latin music.",
       serImages: ["https://example.com/dj-services.jpg"],
-      serType: "Music",
+      serType: "Entertainment",
       serPrice: 275,
       serByHour: true,
       serPremium: [
@@ -288,7 +288,7 @@ const sampleEntertainmentVendors = [
       serName: "Live Band Performance",
       serDescription: "Lively performances by a professional Latin band.",
       serImages: ["https://example.com/live-band-performance.jpg"],
-      serType: "Music",
+      serType: "Entertainment",
       serPrice: 350,
       serByHour: true,
       serPremium: [
@@ -326,7 +326,7 @@ const sampleEntertainmentVendors = [
       serName: "Mechanical Bull Rental",
       serDescription: "Rent a mechanical bull for an unforgettable event.",
       serImages: ["https://example.com/mechanical-bull.jpg"],
-      serType: "Interactive Entertainment",
+      serType: "Entertainment",
       serPrice: 200,
       serByHour: true,
       serPremium: [
@@ -363,7 +363,7 @@ const sampleEntertainmentVendors = [
       serName: "Bounce House Rental",
       serDescription: "Fun and safe bounce houses for children's events.",
       serImages: ["https://example.com/bounce-house.jpg"],
-      serType: "Interactive Entertainment",
+      serType: "Entertainment",
       serPrice: 150,
       serByHour: true,
       serPremium: [
@@ -535,7 +535,9 @@ const sampleCateringVendors = [
 async function seedDatabase() {
     try {
         await Vendor.deleteMany({}); 
-        await Vendor.insertMany(sampleVendors);
+        await Vendor.insertMany(sampleVenueVendors);
+        await Vendor.insertMany(sampleEntertainmentVendors);
+        await Vendor.insertMany(sampleCateringVendors);
         await User.deleteMany({});
 
         console.log('Database seeded successfully!');
