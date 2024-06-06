@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
 // Routers
-ters
 const userRouter = require('./routes/user.route.js');
 const authRouter = require('./routes/auth.route.js');
 const vendorRouter = require('./routes/vendor.route.js');

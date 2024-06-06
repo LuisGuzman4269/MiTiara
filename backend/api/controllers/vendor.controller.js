@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Vendor = require('../../models/Vendor');
 
 const getAllVendors = async (req, res) => {
     const vendors = await Vendor.find();
