@@ -5,6 +5,7 @@ import login from '../resources/User_cicrle.png';
 import './Home.css';
 import CategoryBar from '../components/CategoryBar/CategoryBar';
 import ListingCard from '../components/ListingSection/ListingCard';
+import SearchBar from '../components/SearchBar/SearchBar';
 
 
 interface Listing {
@@ -35,18 +36,23 @@ interface Listing {
 
 const Home = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('');
-    const [listings, setListings] = useState<Listing[]>(listingsData);
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    const [filteredListings, setFilteredListings] = useState<Listing[]>([]);
   
     useEffect(() => {
-      // Filter listings based on initial category
-      setListings(listingsData.filter(listing => listing.category === selectedCategory));
-    }, [selectedCategory]);
+      // Filter listings based on search term and category
+      const filtered = listingsData.filter(listing =>
+        listing.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        (listing.category === selectedCategory || selectedCategory === '')
+      );
+      setFilteredListings(filtered);
+    }, [selectedCategory, searchTerm]); 
   
-    const handleSelectCategory = (category: string) => {
-      setSelectedCategory(category);
-      setListings(listingsData.filter(listing => listing.category === category));
+    // const handleSelectCategory = (category: string) => {
+    //   setSelectedCategory(category);
+    //   setListings(listingsData.filter(listing => listing.category === category));
       
-    };
+    // };
 
     const navigate = useNavigate();
 
@@ -72,10 +78,11 @@ const Home = () => {
               <p className="login-text">Login/SignUp</p>
             </div>
           </div>
-          <CategoryBar onCategorySelect={handleSelectCategory} />
+          <SearchBar placeholder="Search vendors..." onSearch={setSearchTerm} />
+          <CategoryBar onCategorySelect={setSelectedCategory} />
         </header>
         <div className="listings-container">
-          {listings.map((listing: Listing) => ( 
+          {filteredListings.map((listing: Listing) => ( 
             <ListingCard
               key={listing.id}
               imageUrl={listing.imageUrl}
