@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Service = require('./Service');
 
 const VendorSchema = new mongoose.Schema(
     {
@@ -30,7 +31,11 @@ const VendorSchema = new mongoose.Schema(
         vendorCategories: {
             type: [String],
             required: false
-        }
+        },
+        vendorServices: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Service' 
+        }]
     }
 );
 

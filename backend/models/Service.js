@@ -5,13 +5,13 @@ const serviceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    serUserID: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
-    },
     serDescription: {
         type: String,
         required: true
+    },
+    serImages: {
+        type: [String],
+        required: false
     },
     serType: {
         type: String,
