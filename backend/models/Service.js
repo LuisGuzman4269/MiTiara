@@ -15,17 +15,24 @@ const serviceSchema = new mongoose.Schema({
     },
     serType: {
         type: String,
-        // work on discriminator in the future
-        enum: ["Venue", "Catering", "Beauty", "Entertainment", "Other"],
+        enum: ["Venue", "Catering", "Decoration", "Entertainment", "Photography"],
         required: true
     },
     serPrice: {
         type: Number,
         required: true
     },
+    serByHour: {
+        type: Boolean,
+        required: true
+    },
     serPremium: {
         type: [premium],
         required: false
+    },
+    serDetails: {
+        type: mongoose.Schema.Types.Mixed,
+        required: false 
     }
 });
 
@@ -40,7 +47,7 @@ const premium = new mongoose.Schema({
     },
     premName: {
         type: String,
-        required: True
+        required: true
     },
 });
 
