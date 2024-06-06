@@ -1,5 +1,6 @@
 const express = require('express');
-const signup = require('../controllers/auth.contromoller.js');
+const signup = require('../controllers/auth.controller.js');
+const login = require('../controllers/auth.controller.js');
 
 const router = express.Router();
 

@@ -34,5 +34,6 @@ const updateUser = async (req, res, next) => {
         next(error);
     }
 }
+
 module.exports = test;
 module.exports = updateUser;
