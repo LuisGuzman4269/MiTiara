@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const userRouter = require('./routes/user.route.js');
 const authRouter = require('./routes/auth.route.js');
+const vendorRouter = require('./routes/vendor.route.js');
 const cookieParser = require('cookie-parser');
+
 
 const app = express();
 app.use(express.json());
@@ -19,6 +21,7 @@ mongoose.connect('mongodb://localhost:27017/test')
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/vendors", vendorRouter);
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
