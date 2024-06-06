@@ -10,7 +10,8 @@ const VendorSchema = new mongoose.Schema(
         vendorUser:
         {
             type: mongoose.SchemaTypes.ObjectId,
-            required: true
+            // false because I am plugging in a fake user
+            required: false 
         },
         vendorCity: {
             type: String,
@@ -33,8 +34,8 @@ const VendorSchema = new mongoose.Schema(
             required: false
         },
         vendorServices: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Service' 
+            type: Service.Schema,
+            required: false
         }]
     }
 );
@@ -44,7 +45,8 @@ const bio = mongoose.Schema({
         type: String,
     },
     bioImages: [{
-        type: Image,
+        type: String,
+        required: false,
     }],
     vendorAvailability: {
         type: [scheduleDay],

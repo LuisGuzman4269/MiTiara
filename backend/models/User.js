@@ -28,8 +28,8 @@ const userSchema = new mongoose.Schema({
         unique: true
     },
     userImage: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Image'
+        type: String,
+        required: false
     }
 });
 
