@@ -6,10 +6,11 @@
   padding: 8px 20px;
   gap: 15px;
   width: 100%; /* Full width */
-  height: 96px;
-  background: #f5f5f5;
-  border-radius: 12px;
+  height: 120px;
+  background: #ececec;
+
   box-sizing: border-box; /* Include padding in width */
   position: relative; /* Ensure it is in the normal document flow */
-  margin-bottom: 20px; /* Add margin to create space below */
+  margin-bottom: 10px; /* Add margin to create space below */
+  border-radius: 16px;
 }

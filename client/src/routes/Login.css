@@ -1,0 +1,36 @@
+.login-container {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-bottom: 20px; /* Add space between form and link */
+}
+
+.login-form label {
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.login-form button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #000000;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.create-account-link {
+    cursor: pointer;
+}

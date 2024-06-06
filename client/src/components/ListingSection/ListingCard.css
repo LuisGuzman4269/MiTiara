@@ -1,5 +1,8 @@
 /* Listing Card */
 .listing-card {
+    width: 23%; /*  fit 4 cards in a row*/
+    margin: 10px; /* Margin around each card */
+    height: 406px; /* Fixed height, adjust as needed */
     display: flex;
     flex-direction: column;
     align-items: center; /* Center items horizontally */
@@ -11,7 +14,19 @@
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.22);
     border-radius: 16px; /* Curve the ends */
     cursor: pointer; /* Added for clickability indication */
+    
   }
+
+  .listings-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjusts spacing between the cards */
+    align-items: flex-start; /* Aligns items at the start of the container */
+    padding: 20px; /* Padding around the container */
+    gap: 20px; /* Space between rows and columns */
+  }
+
+  
   
   /* Image Container */
   .image-container {

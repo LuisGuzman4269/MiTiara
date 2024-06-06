@@ -8,6 +8,9 @@ import cateringIcon from '../../resources/CateringFrame.png';
 import decorationIcon from '../../resources/DecorationFrame.png';
 import photoVideoIcon from '../../resources/P&VFrame.png';
 
+interface CategoryBarProps {
+  onCategorySelect: (category: string) => void; 
+}
 
 const categories = [
   { label: 'Venue', frameClass: 'venue-category-frame1', icon: venueIcon, labelWidth: '49px' },
@@ -17,12 +20,15 @@ const categories = [
   { label: 'Photo & Video', frameClass: 'photo-video-category-frame5', icon: photoVideoIcon, labelWidth: '109px' },
 ];
 
-const CategoryBar: React.FC = () => {
+
+const CategoryBar: React.FC<CategoryBarProps> = ({ onCategorySelect }) => {
   const [selectedCategory, setSelectedCategory] = useState(categories[0].label);
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
+    onCategorySelect(category);  // Invoke the passed in function from props
   };
+
 
   return (
     <div className="category-bar">
@@ -31,7 +37,7 @@ const CategoryBar: React.FC = () => {
           key={index}
           label={category.label}
           frameClass={category.frameClass}
-          onClick={() => handleCategoryClick(category.label)}
+          onClick={() => handleCategoryClick(category.label)}  // Ensure this is correctly triggering
           selected={selectedCategory === category.label}
           icon={category.icon}
           labelWidth={category.labelWidth}
