@@ -81,7 +81,11 @@ const VendorSchema = mongoose.Schema(
         vendorServices: [{
             type: Service,
             required: false
-        }]
+        }],
+        vendorRatings: {
+            type: Number,
+            required: true
+        }
     }
 );
 
