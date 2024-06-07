@@ -465,7 +465,7 @@ const sampleCateringVendors = [
           capacity: 200
         }
       }],
-      vendorRating: 5.0
+      vendorRating: 4.9
     },
     {
       //Catering 3
@@ -543,7 +543,7 @@ const sampleCateringVendors = [
           capacity: 100
         }
       }],
-      vendorRating: 4.0
+      vendorRating: 4.1
     }
   ];
 
