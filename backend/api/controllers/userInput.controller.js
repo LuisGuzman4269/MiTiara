@@ -36,15 +36,27 @@ const parseAllVendors = async (numOfPeopleOrHours) => {
     }
     return arrayFullOfFacts;
 };
-
+const parseInput = async (input) => {
+    let inputInString = "(event (type " + input.type + ") (date " + input.date + ") (location" + input.location + ") (capacity " + input.capacity + ") (budget " + input.cost + "))";
+    return inputInString;
+}
 
 const ftbUserInput = async (req, res) => {
     const input = req.body;
+    try {
+        const inputString = await parseInput(input);
+    } catch (error) {
+        console.error("Error parsing input:", error);
+        return res.status(500).json({ 
+            message: "Error processing input",
+            error: error.message 
+        });
+    }
 
-
-    res.status(200).json(
-        {message: "data recieved",
-        data: input});
+    res.status(200).json({
+        message: "data received",
+        data: input
+    });
 }
 
 /*
