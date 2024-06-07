@@ -61,11 +61,33 @@ const ftbUserInput = async (req, res) => {
     } else {
         const vendorFacts = parseAllVendors(0);
     }
-    const python = spawn('python', ['../rule_engine/clipsScript.py', input, vendorFacts]);
-    python.stdout.on('data',);
-    res.status(200).json({
-        message: "data received",
-        data: input
+    const python = spawn('python', ['../rule_engine/clipsScript.py', JSON.stringify(input), JSON.stringify(vendorFacts)]);
+    let pythonOutput = '';
+    python.stdout.on('data', (data) => {
+        pythonOutput += data; 
+    });
+    python.on('close', (code) => {
+        if (code === 0) {
+            try {
+                const result = JSON.parse(pythonOutput);
+                res.status(200).json({
+                    message: "Success",
+                    data: result 
+                });
+            } catch (error) {
+                console.error("Error parsing Python output:", error);
+                res.status(500).json({
+                    message: "Error processing Python output",
+                    error: error.message
+                });
+            }
+        } else {
+            console.error(`Python script exited with code ${code}`);
+            res.status(500).json({
+                message: "Python script error",
+                error: `Python script exited with code ${code}`
+            });
+        }
     });
 }
 
