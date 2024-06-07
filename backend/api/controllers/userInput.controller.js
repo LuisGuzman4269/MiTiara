@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Vendor = require('../../models/Vendor');
+const spawn = require('child_process');
+
 
 function isOneOf(value, validValues) {
     return validValues.includes(value);
@@ -43,6 +45,7 @@ const parseInput = async (input) => {
 
 const ftbUserInput = async (req, res) => {
     const input = req.body;
+    const categoriesByHP = ["Catering", "Entertainment"];
     try {
         const inputString = await parseInput(input);
     } catch (error) {
@@ -53,6 +56,13 @@ const ftbUserInput = async (req, res) => {
         });
     }
 
+    if (isOneOf(input.type, categoriesByHP)) {
+        const vendorFacts = parseAllVendors(input.num); 
+    } else {
+        const vendorFacts = parseAllVendors(0);
+    }
+    const python = spawn('python', ['../rule_engine/clipsScript.py', input, vendorFacts]);
+    python.stdout.on('data',);
     res.status(200).json({
         message: "data received",
         data: input
