@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./routes/user.route.js');
 const authRouter = require('./routes/auth.route.js');
 const vendorRouter = require('./routes/vendor.route.js');
+const getInputRouter = require('./routes/vendor.route.js');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/vendors", vendorRouter);
+app.use("/api/sendData", getInputRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
