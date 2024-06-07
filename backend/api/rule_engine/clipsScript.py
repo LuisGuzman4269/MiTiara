@@ -8,22 +8,24 @@ import sys
 # Ratings
 # Category
 arrayOfVendors = [
-      '(vendor (id "6662cf1b524e02ba58f0c081") (name "Region Events") (location "San Luis Obispo") (service-type "Venue") (availability "Monday" "Tuesday" "Wednesday" "Thursday" "Friday") (capacity 500) (cost 5000) (customer-ratings 4.5))',
-      '(vendor (id "6662cf1b524e02ba58f0c08a") (name "Elks Lodge") (location "San Luis Obispo") (service-type "Venue") (availability "Saturday" "Sunday") (capacity 300) (cost 3000) (customer-ratings 3.5))',
-      '(vendor (id "6662cf1b524e02ba58f0c090") (name "Avila Beach Resort") (location "Avila Beach") (service-type "Venue") (availability "Friday" "Saturday") (capacity 250) (cost 7000) (customer-ratings 4.6))',
-      '(vendor (id "6662cf1b524e02ba58f0c096") (name "SLO Brew Rock") (location "San Luis Obispo") (service-type "Venue") (availability "Thursday" "Friday" "Saturday") (capacity 400) (cost 4000) (customer-ratings 3.9))',
-      '(vendor (id "6662cf1b524e02ba58f0c09e") (name "Mariachi San Luis") (location "San Luis Obispo") (service-type "Entertainment") (availability "Friday" "Saturday" "Sunday") (capacity 0) (cost 0) (customer-ratings 4.9))',
-      '(vendor (id "6662cf1b524e02ba58f0c0a5") (name "DJ Kramer") (location "Santa Maria") (service-type "Entertainment") (availability "Friday" "Saturday" "Sunday") (capacity 0) (cost 0) (customer-ratings 4.5))',
-      '(vendor (id "6662cf1b524e02ba58f0c0ac") (name "The Wavebreakers Band") (location "Paso Robles") (service-type "Entertainment") (availability "Saturday" "Sunday") (capacity 0) (cost 0) (customer-ratings 3.4))',
-      '(vendor (id "6662cf1b524e02ba58f0c0b2") (name "Fresno Rodeo") (location "San Luis Obispo") (service-type "Entertainment") (availability "Friday" "Saturday" "Sunday") (capacity 0) (cost 0) (customer-ratings 4.1))',
-      '(vendor (id "6662cf1b524e02ba58f0c0b9") (name "SLO Bounce Co") (location "Templeton") (service-type "Entertainment") (availability "Friday" "Saturday" "Sunday") (capacity 0) (cost 0) (customer-ratings 2.9))',
-      '(vendor (id "6662cf1b524e02ba58f0c0c1") (name "Taqueria 805") (location "San Luis Obispo") (service-type "Catering") (availability "Friday" "Saturday" "Sunday") (capacity 100) (cost 0) (customer-ratings 4.8))',
-      '(vendor (id "6662cf1b524e02ba58f0c0c8") (name "Popolo Catering") (location "Santa Maria") (service-type "Catering") (availability "Friday" "Saturday" "Sunday") (capacity 200) (cost 0) (customer-ratings 5.0))',
-      '(vendor (id "6662cf1b524e02ba58f0c0cf") (name "SLO Bartenders") (location "San Luis Obispo") (service-type "Catering") (availability "Friday" "Saturday" "Sunday") (capacity 50) (cost 0) (customer-ratings 3.8))',
-      '(vendor (id "6662cf1b524e02ba58f0c0d6") (name "Central Coast Catering") (location "Arroyo Grande") (service-type "Catering") (availability "Friday" "Saturday" "Sunday") (capacity 100) (cost 0) (customer-ratings 4.0))'
-    ]
+  '(vendor (id "66631ef121a0c24d8fb03cbf") (name "Region Events") (location "San Luis Obispo") (service-type "Venue") (availability "Monday" "Tuesday" "Wednesday" "Thursday" "Friday") (capacity 500) (cost 5000) (customer-ratings 4.5))',
+  '(vendor (id "66631ef121a0c24d8fb03cc8") (name "Elks Lodge") (location "San Luis Obispo") (service-type "Venue") (availability "Saturday" "Sunday") (capacity 300) (cost 3000) (customer-ratings 3.5))',
+  '(vendor (id "66631ef121a0c24d8fb03cce") (name "Avila Beach Resort") (location "Avila Beach") (service-type "Venue") (availability "Friday" "Saturday") (capacity 250) (cost 7000) (customer-ratings 4.6))',
+  '(vendor (id "66631ef121a0c24d8fb03cd4") (name "SLO Brew Rock") (location "San Luis Obispo") (service-type "Venue") (availability "Thursday" "Friday" "Saturday") (capacity 400) (cost 4000) (customer-ratings 3.9))',
+  '(vendor (id "66631ef121a0c24d8fb03cdc") (name "Mariachi San Luis") (location "San Luis Obispo") (service-type "Entertainment") (availability "Friday" "Saturday" "Sunday") (capacity 0) (cost 1000) (customer-ratings 4.9))',
+  '(vendor (id "66631ef121a0c24d8fb03ce3") (name "DJ Kramer") (location "Santa Maria") (service-type "Entertainment") (availability "Friday" "Saturday" "Sunday") (capacity 0) (cost 1375) (customer-ratings 4.5))',
+  '(vendor (id "66631ef121a0c24d8fb03cea") (name "The Wavebreakers Band") (location "Paso Robles") (service-type "Entertainment") (availability "Saturday" "Sunday") (capacity 0) (cost 1750) (customer-ratings 3.4))',
+  '(vendor (id "66631ef121a0c24d8fb03cf0") (name "Fresno Rodeo") (location "San Luis Obispo") (service-type "Entertainment") (availability "Friday" "Saturday" "Sunday") (capacity 0) (cost 1000) (customer-ratings 4.1))',
+  '(vendor (id "66631ef121a0c24d8fb03cf7") (name "SLO Bounce Co") (location "Templeton") (service-type "Entertainment") (availability "Friday" "Saturday" "Sunday") (capacity 0) (cost 750) (customer-ratings 2.9))',
+  '(vendor (id "66631ef121a0c24d8fb03cff") (name "Taqueria 805") (location "San Luis Obispo") (service-type "Catering") (availability "Friday" "Saturday" "Sunday") (capacity 100) (cost 60) (customer-ratings 4.8))',
+  '(vendor (id "66631ef121a0c24d8fb03d06") (name "Popolo Catering") (location "Santa Maria") (service-type "Catering") (availability "Friday" "Saturday" "Sunday") (capacity 200) (cost 125) (customer-ratings 4.9))',
+  '(vendor (id "66631ef121a0c24d8fb03d0d") (name "SLO Bartenders") (location "San Luis Obispo") (service-type "Catering") (availability "Friday" "Saturday" "Sunday") (capacity 50) (cost 250) (customer-ratings 3.8))',
+  '(vendor (id "66631ef121a0c24d8fb03d14") (name "Central Coast Catering") (location "Arroyo Grande") (service-type "Catering") (availability "Friday" "Saturday" "Sunday") (capacity 100) (cost 150) (customer-ratings 4.1))'
+]
 
 matchy = '(event (type "Venue") (date "Monday") (location "San Luis Obispo") (guest-capacity 100) (budget 10000))'
+
+
 typeEvent = "Venue"
 
 tempMatch = """
@@ -104,7 +106,7 @@ DEFRULE_Entertainment= """
 (test (member$ ?matchDate ?avail))
 (test (>= ?ratings 3.5))
 => 
-(printout t "IT WORKED! " ?vendorID crlf)
+(printout t "ID: " ?vendorID crlf)
 (assert (match (vendor-id ?vendorID)))
 )"""
 

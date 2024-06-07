@@ -38,10 +38,11 @@ const parseAllVendors =  async (numOfPeopleOrHours) => {
             arrayFullOfFacts.push(fact);
         }
     }
+    console.log(arrayFullOfFacts)
     return arrayFullOfFacts;
 };
 const parseInput = async (input) => {
-    let inputInString = "(event (type " + input.type + ") (date " + input.date + ") (location" + input.location + ") (capacity " + input.capacity + ") (budget " + input.cost + "))";
+    let inputInString = "(event (type " + input.type + ") (date " + input.date + ") (location " + input.location + ") (guest-capacity " + input.capacity + ") (budget " + input.cost + "))";
     return inputInString;
 }
 
@@ -72,13 +73,7 @@ const ftbUserInput = async (req, res) => {
         scriptPath: 'backend/api/rule_engine/clipsScript.py',
         args: [inputString, vendorFacts]
     }
-    PythonShell.run('clipsScript.py', options, function (err, results) {
-        if (err) 
-          throw err;
-        // Results is an array consisting of messages collected during execution
-        console.log('results: %j', results);
-      }); 
-    const python = spawn('python', ['clipsScript.py', inputString, vendorFacts]);
+    const python = exec('python', ['./api/rule_engine/clipsScript.py', inputString, vendorFacts]);
     let pythonOutput = '';
     python.stdout.on('data', function(data) { 
         res.send(data.toString()); 
@@ -108,14 +103,6 @@ const ftbUserInput = async (req, res) => {
         }
     });
 }
-
-/*
-mongoose.connect('mongodb://localhost:27017/PFM')
-.then(() => {
-    console.log('Connected to MongoDB!');
-});
-parseAllVendors(5);
-*/
 
 module.exports = ftbUserInput;
 
