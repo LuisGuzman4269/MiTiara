@@ -77,7 +77,8 @@ const sampleVenueVendors = [
                 capacity: 500,
                 amenities: ["Dance floor", "Stage", "Audiovisual equipment"]
             }
-        }]
+        }],
+        vendorRating: 4.5
     },
     {
     //Venue 2 
@@ -113,9 +114,9 @@ const sampleVenueVendors = [
         capacity: 300,
         amenities: ["Full kitchen", "Parking", "Stage"]
       }
-    }]
+    }],
+    vendorRating: 3.5
   },
-  
   {
     //Venue 3 
     vendorName: "Avila Beach Resort",
@@ -150,7 +151,8 @@ const sampleVenueVendors = [
         capacity: 250,
         amenities: ["Ocean view", "Outdoor seating", "Sound system"]
       }
-    }]
+    }],
+    vendorRating: 4.6
   },
   {
     //Venue 4
@@ -187,7 +189,8 @@ const sampleVenueVendors = [
         capacity: 400,
         amenities: ["Stage", "Sound system", "Lighting"]
       }
-    }]
+    }],
+    vendorRating: 3.9
   },
 ];
 
@@ -227,9 +230,9 @@ const sampleEntertainmentVendors = [
         numberOfPerformers: 7,
         instruments: ["Guitar", "Violin", "Trumpet"]
       }
-    }]
+    }],
+    vendorRating: 4.9
   },
-
   {
     //Entertainment 2
     vendorName: "DJ Kramer",
@@ -265,7 +268,9 @@ const sampleEntertainmentVendors = [
         equipment: ["Speakers", "Lights", "Turntables"],
         musicGenres: ["Latin", "Top 40", "Hip Hop"]
       }
-    }]
+    }],
+    vendorRating: 4.5
+
   },
 
   {
@@ -302,9 +307,10 @@ const sampleEntertainmentVendors = [
         numberOfPerformers: 6,
         instruments: ["Guitar", "Trumpet", "Percussion"]
       }
-    }]
-  },
+    }],
+    vendorRating: 3.4
 
+  },
   {
     //Entertainment 4
     vendorName: "Fresno Rodeo",
@@ -339,9 +345,9 @@ const sampleEntertainmentVendors = [
       serDetails: {
         safetyFeatures: ["Soft landing area", "Speed control"]
       }
-    }]
+    }],
+    vendorRating: 4.1
   }, 
-
   {
     //Entertainment 5
     vendorName: "SLO Bounce Co",
@@ -376,7 +382,9 @@ const sampleEntertainmentVendors = [
       serDetails: {
         safetyFeatures: ["Safety netting", "Soft landing area"]
       }
-    }]
+    }],
+    vendorRating: 2.9
+
   }
 ];
 
@@ -414,9 +422,11 @@ const sampleCateringVendors = [
         ],
         serDetails: {
           cuisineType: "Mexican",
-          servingSize: "Per person"
+          servingSize: "Per person",
+          capacity: 100
         }
-      }]
+      }],
+      vendorRating: 4.8
     },
     {
       //Catering 2
@@ -451,9 +461,11 @@ const sampleCateringVendors = [
         ],
         serDetails: {
           cuisineType: "BBQ, Italian",
-          servingSize: "Per person"
+          servingSize: "Per person",
+          capacity: 200
         }
-      }]
+      }],
+      vendorRating: 5.0
     },
     {
       //Catering 3
@@ -488,9 +500,11 @@ const sampleCateringVendors = [
         ],
         serDetails: {
           serviceType: "Bartending",
-          servingSize: "Per hour"
+          servingSize: "Per hour",
+          capacity: 50
         }
-      }]
+      }],
+      vendorRating: 3.8
     },
     {
       //Catering 4
@@ -525,9 +539,11 @@ const sampleCateringVendors = [
         ],
         serDetails: {
           cuisineType: "Farm-to-table",
-          servingSize: "Per person"
+          servingSize: "Per person",
+          capacity: 100
         }
-      }]
+      }],
+      vendorRating: 4.0
     }
   ];
 
