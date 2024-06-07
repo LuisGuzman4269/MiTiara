@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const userRouter = require('./routes/user.route.js');
 const authRouter = require('./routes/auth.route.js');
 const vendorRouter = require('./routes/vendor.route.js');
-const getInputRouter = require('./routes/vendor.route.js');
+const getInputRouter = require('./routes/userInput.route.js');
 
 const app = express();
 

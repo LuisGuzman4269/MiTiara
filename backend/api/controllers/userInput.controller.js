@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Vendor = require('../../models/Vendor');
-const spawn = require('child_process');
+const {spawn, exec} = require('child_process');
+const PythonShell = require('python-shell').PythonShell;
+
 
 
 function isOneOf(value, validValues) {
@@ -8,7 +10,7 @@ function isOneOf(value, validValues) {
   };
 
 
-const parseAllVendors = async (numOfPeopleOrHours) => {
+const parseAllVendors =  async (numOfPeopleOrHours) => {
     const vendors = await Vendor.find();
     const categoriesByHP = ["Catering", "Entertainment"];
     const categoriesByC = ["Catering", "Venue"];
@@ -46,8 +48,10 @@ const parseInput = async (input) => {
 const ftbUserInput = async (req, res) => {
     const input = req.body;
     const categoriesByHP = ["Catering", "Entertainment"];
+    let inputString;
+    let vendorFacts;
     try {
-        const inputString = await parseInput(input);
+        inputString = await parseInput(input);
     } catch (error) {
         console.error("Error parsing input:", error);
         return res.status(500).json({ 
@@ -56,16 +60,30 @@ const ftbUserInput = async (req, res) => {
         });
     }
 
+    
     if (isOneOf(input.type, categoriesByHP)) {
-        const vendorFacts = parseAllVendors(input.num); 
+        vendorFacts = await parseAllVendors(input.num); 
     } else {
-        const vendorFacts = parseAllVendors(0);
+        vendorFacts = await parseAllVendors(0);
     }
-    const python = spawn('python', ['../rule_engine/clipsScript.py', JSON.stringify(input), JSON.stringify(vendorFacts)]);
+
+    const options = {
+        mode: 'text',
+        scriptPath: 'backend/api/rule_engine/clipsScript.py',
+        args: [inputString, vendorFacts]
+    }
+    PythonShell.run('clipsScript.py', options, function (err, results) {
+        if (err) 
+          throw err;
+        // Results is an array consisting of messages collected during execution
+        console.log('results: %j', results);
+      }); 
+    const python = spawn('python', ['clipsScript.py', inputString, vendorFacts]);
     let pythonOutput = '';
-    python.stdout.on('data', (data) => {
-        pythonOutput += data; 
-    });
+    python.stdout.on('data', function(data) { 
+        res.send(data.toString()); 
+    } ) 
+    console.log(pythonOutput);
     python.on('close', (code) => {
         if (code === 0) {
             try {
