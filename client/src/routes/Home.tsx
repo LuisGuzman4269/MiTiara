@@ -184,11 +184,12 @@ const Home = () => {
       (searchQuery.city ? listing.vendorCity.toLowerCase() === searchQuery.city.toLowerCase() : true) &&
       (searchQuery.state ? listing.vendorState.toLowerCase() === searchQuery.state.toLowerCase() : true) &&
       (!searchQuery.date || listing.vendorAvailability.some(avail =>
-        new Date(avail.startTime).toDateString() === (searchQuery.date ? new Date(searchQuery.date).toLocaleDateString() : "")
+        searchQuery.date && searchQuery.date >= avail.startTime && searchQuery.date <= avail.endTime
       ))
     );
     setFilteredListings(filtered);
-  }, [searchQuery, selectedCategory]);  // Ensures filtering logic runs only when searchQuery or selectedCategory changes.
+  }, [searchQuery, selectedCategory]);
+   // Ensures filtering logic runs only when searchQuery or selectedCategory changes.
 
   const navigate = useNavigate();
 
